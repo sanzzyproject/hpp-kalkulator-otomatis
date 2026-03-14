@@ -21,7 +21,7 @@ export async function getDB() {
   });
 }
 
-export async function saveCalculation(calculation: Omit<Calculation, 'id'>) {
+export async function saveCalculation(calculation: Omit<Calculation, 'id' | 'createdAt'>) {
   const db = await getDB();
   const id = await db.add(storeName, { ...calculation, createdAt: Date.now() });
   return id;
